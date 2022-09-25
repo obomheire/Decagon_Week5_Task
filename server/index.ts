@@ -123,7 +123,7 @@ const server: Server = http.createServer(
       }
     } else {
       res.writeHead(404, { "Content-Type": "application/json" });
-      res.write(JSON.stringify({ success: false, error: "Invalid URL" }));
+      res.write(JSON.stringify({ success: true, error: "Invalid URL" }));
       res.end();
     }
   }
