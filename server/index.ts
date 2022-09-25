@@ -111,7 +111,7 @@ const server: Server = http.createServer(
         res.end();
       }
     } else if (req.method === "GET") {
-      if (req.url === "/") {
+      if (req.url === "/apk") {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(
           JSON.stringify({
