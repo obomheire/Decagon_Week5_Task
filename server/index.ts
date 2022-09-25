@@ -23,7 +23,7 @@ const server: Server = http.createServer(
       if (req.url === "/api") {
         const products = service.getProducts();
         res.writeHead(200, { "Content-Type": "application/json" });
-        res.write(JSON.stringify({ success: true, data: products },null,2));
+        res.write(JSON.stringify({ success: true, data: products }, null, 2));
         res.end();
       } else if (req.url?.startsWith("/api?productId")) {
         const q = url.parse(req.url, true).query;
@@ -108,6 +108,17 @@ const server: Server = http.createServer(
       } else {
         res.writeHead(404, { "Content-Type": "application/json" });
         res.write(JSON.stringify({ success: false, error: "Invalid URL" }));
+        res.end();
+      }
+    } else if (req.method === "GET") {
+      if (req.url === "/") {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(
+          JSON.stringify({
+            success: true,
+            message: "Hello! from ecommerce website",
+          })
+        );
         res.end();
       }
     } else {
