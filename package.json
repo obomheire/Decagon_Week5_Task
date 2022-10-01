@@ -5,7 +5,9 @@
   "author": "Decagon <info@decagon.dev>",
   "private": true,
   "scripts": {
-    "serve":"node lib/index"
+    "start":"node lib/index",
+    "compile": "yarn tsc",
+    "heroku-postbuild": "yarn compile"
   },
   "dependencies": {
     "@types/node": "^14.14.22",
