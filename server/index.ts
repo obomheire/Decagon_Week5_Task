@@ -31,7 +31,7 @@ const server: Server = http.createServer(
         try {
           const product = service.getProduct(productId);
           res.writeHead(200, { "Content-Type": "application/json" });
-          res.write(JSON.stringify({ success: true, data: product }));
+          res.write(JSON.stringify({ success: false, data: product }));
           res.end();
         } catch (error: any) {
           res.writeHead(404, { "Content-Type": "application/json" });
@@ -39,14 +39,19 @@ const server: Server = http.createServer(
           res.end();
         }
       } else {
-        res.writeHead(404, { "Content-Type": "application/json" });
-        res.write(JSON.stringify({ success: false, error: "Invalid URL" }));
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(
+          JSON.stringify({
+            success: "Running",
+            message: "Hello! from ecommerce website",
+          })
+        );
         res.end();
       }
     } else if (req.method === "POST") {
       if (req.url === "/api") {
         let body = "";
-        req.on("data", (chunk) => {
+        req.on("data", (chunk: any) => {
           body += chunk;
         });
         req.on("end", () => {
